@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binance Support Agent</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>:root{--bg:#0a0c10;--surface:#111318;--surface2:#181c24;--border:#1f2430;--accent:#f0b90b;--accent2:#f8d254;--text:#e8eaf0;--muted:#5a6070;--muted2:#3a404f;--green:#0ecb81;--red:#f6465d;--user-bubble:#1a2035;--agent-bubble:#13161e}*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;height:100vh;display:flex;flex-direction:column;overflow:hidden}.header{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1.5rem;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}.header-left{display:flex;align-items:center;gap:0.75rem}.header-sub-removed{display:none}.header-session{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.1rem;letter-spacing:0.02em}.header-title{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--text)}.header-sub{font-size:0.72rem;color:var(--muted);font-family:'IBM Plex Mono',monospace}.status-dot{display:flex;align-items:center;gap:0.4rem;font-size:0.72rem;color:var(--green);font-family:'IBM Plex Mono',monospace}.status-dot::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite}@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}.api-banner{background:rgba(240,185,11,0.08);border-bottom:1px solid rgba(240,185,11,0.2);padding:0.6rem 1.5rem;display:flex;align-items:center;gap:0.75rem;flex-shrink:0}.api-banner label{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--accent);white-space:nowrap}.api-banner input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:0.35rem 0.75rem;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);outline:none;transition:border-color 0.2s}.api-banner input:focus{border-color:var(--accent)}.api-banner .save-btn{background:var(--accent);color:#000;border:none;border-radius:4px;padding:0.35rem 1rem;font-family:'Syne',sans-serif;font-weight:600;font-size:0.75rem;cursor:pointer;transition:opacity 0.2s;white-space:nowrap}.api-banner .save-btn:hover{opacity:0.85}.chat-area{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;scrollbar-width:thin;scrollbar-color:var(--muted2) transparent}.chat-area::-webkit-scrollbar{width:4px}.chat-area::-webkit-scrollbar-thumb{background:var(--muted2);border-radius:99px}.message{display:flex;gap:0.75rem;max-width:780px;animation:msgIn 0.25s ease both}@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}.message.user{align-self:flex-end;flex-direction:row-reverse}.message.agent{align-self:flex-start}.logo{width:36px;height:36px;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}.logo img{width:36px;height:36px;object-fit:contain}.header-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text);line-height:1.2;font-variant-numeric:normal;font-feature-settings:"lnum" 1}.avatar{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-family:'Syne',sans-serif;font-weight:700;flex-shrink:0;margin-top:2px;overflow:hidden}.avatar.agent-av{background:#000;padding:2px}.avatar.agent-av img{width:100%;height:100%;object-fit:contain}.avatar.user-av{background:var(--surface2);border:1px solid var(--border);color:var(--muted)}.bubble{padding:0.75rem 1rem;border-radius:10px;font-size:0.875rem;line-height:1.65;max-width:600px}.message.agent .bubble{background:var(--agent-bubble);border:1px solid var(--border);border-top-left-radius:2px;color:var(--text)}.message.user .bubble{background:var(--user-bubble);border:1px solid rgba(240,185,11,0.15);border-top-right-radius:2px;color:var(--text)}.bubble strong{color:var(--accent);font-weight:600}.bubble em{color:var(--muted);font-style:normal;font-size:0.82rem}.bubble ol,.bubble ul{padding-left:1.2rem;margin:0.5rem 0;display:flex;flex-direction:column;gap:0.3rem}.bubble code{background:rgba(240,185,11,0.1);color:var(--accent2);font-family:'IBM Plex Mono',monospace;font-size:0.8rem;padding:0.1rem 0.4rem;border-radius:3px}.bubble hr{border:none;border-top:1px solid var(--border);margin:0.6rem 0}.bubble img{max-width:260px;border-radius:6px;margin-top:0.4rem;border:1px solid var(--border);display:block}.sop-tag{display:inline-flex;align-items:center;gap:0.3rem;background:rgba(14,203,129,0.1);border:1px solid rgba(14,203,129,0.25);color:var(--green);font-family:'IBM Plex Mono',monospace;font-size:0.68rem;padding:0.2rem 0.6rem;border-radius:99px;margin-bottom:0.5rem;width:fit-content}.typing-indicator .bubble{display:flex;align-items:center;gap:4px;padding:0.75rem 1rem}.typing-indicator .dot{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:typingDot 1.2s infinite}.typing-indicator .dot:nth-child(2){animation-delay:0.2s}.typing-indicator .dot:nth-child(3){animation-delay:0.4s}@keyframes typingDot{0%,60%,100%{opacity:0.3;transform:scale(0.8)}30%{opacity:1;transform:scale(1)}}.input-area{background:var(--surface);border-top:1px solid var(--border);padding:1rem 1.5rem;flex-shrink:0}.input-row{display:flex;align-items:flex-end;gap:0.75rem;background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:0.6rem 0.75rem;transition:border-color 0.2s}.input-row:focus-within{border-color:var(--accent)}.attach-btn{background:none;border:none;cursor:pointer;color:var(--muted);padding:0.25rem;border-radius:4px;transition:color 0.15s;flex-shrink:0;display:flex;align-items:center}.attach-btn:hover{color:var(--accent)}#fileInput{display:none}.img-preview-strip{display:flex;gap:0.5rem;margin-bottom:0.5rem;flex-wrap:wrap}.img-preview-thumb{position:relative;width:52px;height:52px}.img-preview-thumb img{width:52px;height:52px;object-fit:cover;border-radius:5px;border:1px solid var(--border)}.img-preview-thumb .remove-img{position:absolute;top:-4px;right:-4px;width:16px;height:16px;background:var(--red);border:none;border-radius:50%;color:white;font-size:0.65rem;cursor:pointer;display:flex;align-items:center;justify-content:center}#userInput{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:0.875rem;resize:none;min-height:24px;max-height:120px;line-height:1.5}#userInput::placeholder{color:var(--muted)}.send-btn{background:var(--accent);border:none;border-radius:6px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.15s}.send-btn:hover{background:var(--accent2)}.send-btn:disabled{opacity:0.4;cursor:not-allowed}.send-btn svg{width:16px;height:16px;fill:#000}.input-hint{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top:0.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.35rem}.feedback-row{display:flex;align-items:center;gap:0.35rem;margin-top:0.55rem}.fb-btn{background:none;border:1px solid transparent;border-radius:4px;cursor:pointer;padding:0.2rem 0.4rem;font-size:0.75rem;color:var(--muted2);transition:all 0.15s;line-height:1}.fb-btn:hover{border-color:var(--border);color:var(--muted)}.fb-btn.active-up{color:var(--green);border-color:rgba(14,203,129,0.3);background:rgba(14,203,129,0.07)}.fb-btn.active-down{color:var(--red);border-color:rgba(246,70,93,0.3);background:rgba(246,70,93,0.07)}.fb-label{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted2);transition:color 0.2s}.fb-label.noted{color:var(--muted)}.summary-card{background:var(--surface2);border:1px solid var(--accent);border-left:3px solid var(--accent);border-radius:8px;padding:0.9rem 1rem;margin-top:0.75rem;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;color:var(--text);line-height:1.7;white-space:pre-wrap;word-break:break-word}.summary-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}.summary-card-title{font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em}.copy-btn{background:var(--accent);border:none;border-radius:4px;padding:0.25rem 0.65rem;font-family:'IBM Plex Mono',monospace;font-size:0.65rem;font-weight:500;color:#000;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:0.3rem}.copy-btn:hover{background:var(--accent2)}.copy-btn.copied{background:var(--green);color:#000}.close-chat-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:1rem;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.15s;line-height:1}.close-chat-btn:hover{color:var(--text);border-color:var(--muted)}.end-chat-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1rem auto;max-width:420px;animation:msgIn 0.3s ease both;text-align:center}.end-chat-card .end-title{font-family:'Syne',sans-serif;font-size:0.95rem;color:var(--text);margin-bottom:0.4rem;font-weight:700}.end-chat-card .end-sub{font-size:0.78rem;color:var(--muted);margin-bottom:1.1rem;line-height:1.5}.emoji-feedback{display:flex;gap:1rem;justify-content:center;margin-bottom:1rem}.emoji-btn{background:var(--surface);border:2px solid var(--border);border-radius:50%;width:52px;height:52px;font-size:1.5rem;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}.emoji-btn:hover{border-color:var(--muted);transform:scale(1.08)}.emoji-btn.selected-happy{border-color:var(--green);background:rgba(14,203,129,0.1)}.emoji-btn.selected-sad{border-color:var(--red);background:rgba(246,70,93,0.1)}.end-chat-card textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.85rem;color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;resize:none;outline:none;line-height:1.5;margin-bottom:1rem;text-align:left}.end-chat-card textarea::placeholder{color:var(--muted2)}.end-chat-card textarea:focus{border-color:var(--muted)}.btn-end-confirm{width:100%;padding:0.65rem;background:var(--red);border:none;border-radius:8px;color:#fff;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.15s;letter-spacing:0.02em}.btn-end-confirm:hover{opacity:0.88}.btn-new-chat{background:var(--accent);color:#000;border:none;border-radius:8px;padding:0.65rem 1rem;font-family:'IBM Plex Sans',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;width:100%;margin-top:0.75rem;transition:all 0.15s}.btn-new-chat:hover{background:var(--accent2)}.chat-ended-msg{text-align:center;padding:1.5rem 1rem 0.75rem;color:var(--muted);font-size:0.82rem;font-family:'IBM Plex Mono',monospace}.dev-panel{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:999;flex-direction:column;overflow:hidden}.dev-panel.open{display:flex}.dev-panel-header{display:flex;align-items:center;justify-content:space-between;padding:0.85rem 1rem;border-bottom:1px solid var(--border);flex-shrink:0}.dev-panel-header span{font-family:'Syne',sans-serif;font-size:0.85rem;color:var(--accent);font-weight:700}.dev-panel-close{background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0.2rem}.dev-panel-body{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:1rem}.dev-section-title{font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem}.dev-entry{background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.75rem;font-size:0.75rem;color:var(--text);line-height:1.6;margin-bottom:0.5rem}.dev-entry .dev-meta{font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-bottom:0.35rem}.dev-empty{color:var(--muted);font-size:0.75rem;font-family:'IBM Plex Mono',monospace;text-align:center;padding:1rem 0}.dev-clear-btn{background:none;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.65rem;padding:0.3rem 0.7rem;cursor:pointer;transition:all 0.15s;margin-top:0.5rem}.dev-clear-btn:hover{border-color:var(--red);color:var(--red)}.dev-trigger{background:var(--border);border:none;width:5px;height:5px;border-radius:50%;cursor:pointer;padding:0;user-select:none;transition:background 0.2s;display:block;flex-shrink:0}.dev-trigger:hover{background:var(--muted2)}.sop-cards{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem}.sop-card{background:var(--surface2);border:1px solid var(--border);border-radius:99px;padding:0.25rem 0.7rem;display:flex;align-items:center;gap:0.35rem;font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all 0.15s}.sop-card:hover{border-color:var(--accent);color:var(--accent);background:rgba(240,185,11,0.06)}.sop-card span{flex:1}background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin:auto;max-width:500px;text-align:center;animation:msgIn 0.4s ease both}.welcome-card .wc-icon{font-size:2rem;margin-bottom:0.75rem}.welcome-card h2{font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:0.5rem;color:var(--accent)}.welcome-card p{font-size:0.82rem;color:var(--muted);line-height:1.6}.caps-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-top:1rem}.cap-item{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:0.5rem 0.75rem;font-size:0.75rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-align:left}.cap-item span{color:var(--green);margin-right:0.3rem}</style>
+</head>
+<body>
+<div class="header">
+<div class="header-left">
+<div class="logo">
+<svg viewBox="0 0 100 100" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="50" fill="#000"/>
+<g fill="#F0B90B">
+<polygon points="50,18 60,28 50,38 40,28"/>
+<polygon points="28,40 38,50 28,60 18,50"/>
+<polygon points="72,40 82,50 72,60 62,50"/>
+<polygon points="50,62 62,50 74,62 62,74"/>
+<polygon points="50,62 38,50 26,62 38,74"/>
+<polygon points="50,38 62,50 50,62 38,50"/>
+</g>
+</svg>
+</div>
+<div>
+<div class="header-title">Bini &nbsp;·&nbsp; Binance 2FA Assistant</div>
+<div class="header-session" id="headerSessionId"></div>
+</div>
+</div>
+<div style="display:flex;align-items:center;gap:0.75rem;">
+<div class="status-dot">Online</div>
+<button class="close-chat-btn" onclick="triggerCloseChat()" title="Close chat">⎋</button>
+</div>
+</div>
+<div class="chat-area" id="chatArea">
+<div class="welcome-card">
+<div class="sop-cards">
+<button class="sop-card" onclick="quickSend('I need to reset my 2FA')">🔐<span>Reset 2FA</span></button>
+<button class="sop-card" onclick="quickSend('My passkey is not working')">🔑<span>Passkey Issue</span></button>
+<button class="sop-card" onclick="quickSend('How do I add a new passkey?')">➕<span>Add Passkey</span></button>
+<button class="sop-card" onclick="quickSend('My email verification code is not arriving')">📧<span>Email Code</span></button>
+<button class="sop-card" onclick="quickSend('My SMS verification code is not arriving')">📱<span>SMS Code</span></button>
+<button class="sop-card" onclick="quickSend('My authenticator app code is not working')">⚠️<span>Auth Code</span></button>
+<button class="sop-card" onclick="quickSend('I forgot my password and need to reset it')">🔒<span>Reset Password</span></button>
+<button class="sop-card" onclick="quickSend('My account was disabled and I need to unlock it')">🔓<span>Unlock Account</span></button>
+<button class="sop-card" onclick="quickSend('I need to record a video for my 2FA reset')">🎥<span>Video Guide</span></button>
+</div>
+<div class="wc-icon">👋</div>
+<h2>Hey, I'm Bini!</h2>
+<p>Your Binance virtual 2FA assistant. I'm here to help you with anything 2FA — resets, passkeys, password recovery, account access. Just tell me what's going on!</p>
+</div>
+</div>
+<div class="input-area">
+<div id="imgPreviewStrip" class="img-preview-strip"></div>
+<div class="input-row">
+<button class="attach-btn" onclick="document.getElementById('fileInput').click()" title="Attach screenshot">
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+<polyline points="21 15 16 10 5 21"/>
+</svg>
+</button>
+<input type="file" id="fileInput" accept="image/*" multiple>
+<textarea id="userInput" placeholder="Describe the issue, paste an error code, or attach a screenshot…" rows="1"></textarea>
+<button class="send-btn" id="sendBtn" onclick="sendMessage()">
+<svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+</button>
+</div>
+<div class="input-hint"><span>Enter to send · Shift+Enter for new line · Images supported</span><button class="dev-trigger" id="devTrigger" onclick="promptDevAccess()" title=""></button></div>
+</div>
+<div id="devPinModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;">
+<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.5rem;width:260px;text-align:center;">
+<div style="font-family:'Syne',sans-serif;font-size:0.9rem;color:var(--accent);margin-bottom:0.75rem;">🛠 Dev Access</div>
+<input id="devPinInput" type="password" placeholder="Enter PIN" style="width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.5rem 0.75rem;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:0.85rem;outline:none;text-align:center;margin-bottom:0.75rem;">
+<div id="devPinError" style="color:var(--red);font-size:0.72rem;font-family:'IBM Plex Mono',monospace;margin-bottom:0.5rem;min-height:1rem;"></div>
+<div style="display:flex;gap:0.5rem;">
+<button onclick="closePinModal()" style="flex:1;background:none;border:1px solid var(--border);border-radius:6px;padding:0.45rem;color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;cursor:pointer;">Cancel</button>
+<button onclick="submitPin()" style="flex:1;background:var(--accent);border:none;border-radius:6px;padding:0.45rem;color:#000;font-family:'IBM Plex Sans',sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;">Enter</button>
+</div>
+</div>
+</div>
+<div class="dev-panel" id="devPanel">
+<div class="dev-panel-header">
+<span>🛠 Dev Dashboard</span>
+<button class="dev-panel-close" onclick="closeDevPanel()">✕</button>
+</div>
+<div style="padding:0.85rem 1rem;border-bottom:1px solid var(--border);flex-shrink:0;">
+<div class="dev-section-title" style="margin-bottom:0.4rem;">🔑 API Key</div>
+<div style="display:flex;gap:0.5rem;align-items:center;">
+<input type="password" id="apiKeyInput" placeholder="sk-ant-..." style="flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:0.45rem 0.7rem;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:0.75rem;outline:none;">
+<button onclick="saveKey()" style="background:var(--accent);border:none;border-radius:6px;padding:0.45rem 0.85rem;color:#000;font-family:'IBM Plex Sans',sans-serif;font-size:0.75rem;font-weight:600;cursor:pointer;white-space:nowrap;">Save</button>
+</div>
+<div id="apiKeyStatus" style="font-family:'IBM Plex Mono',monospace;font-size:0.62rem;color:var(--muted);margin-top:0.35rem;"></div>
+</div>
+<div class="dev-panel-body" id="devPanelBody"></div>
+</div>
+<script>// ─── SOP DATA ─────────────────────────────────────────────────────────────────
+const SOPS = [
+{
+id: "2FA_RESET_SELF",
+keywords: ["2fa", "two factor", "authenticator", "google auth", "reset 2fa", "lost phone", "new phone", "cant login 2fa", "lost 2fa", "2fa reset", "lost authenticator"],
+title: "2FA Self-Reset (via Binance Flow)",
+steps: [
+"Go to binance.com and click [Log In]",
+"Enter email/phone and click [Next]",
+"If prompted for passkey: click [Cancel] → [My Passkeys Are Not Available]",
+"Enter password and click [Next]. If password is forgotten, use [Forgot password?]",
+"On the Security Verification page, select the unavailable 2FA method, then click [Security verification unavailable?]",
+"On the Reset Security Verification page, check all lost 2FA devices and click [Confirm Reset]",
+"Read the warning popup (withdrawals/P2P/payments disabled 48h after reset) and click [Confirm]",
+"Complete verification with remaining available 2FA devices",
+"If prompted, enter new phone/email and click [Get Code] → [Submit]",
+"If result is [Under Review]: team reviews within up to 48 hours — user will be notified via new verified email",
+"If [Application Denied]: user must double-check available 2FA devices and retry"
+],
+warning: "Withdrawals, P2P selling, and payment services are DISABLED for 48 hours after resetting 2FA. Inform the user before proceeding.",
+errorCodes: []
+},
+{
+id: "2FA_RESET_APPEAL",
+keywords: ["appeal", "reset appeal", "2fa appeal", "manual reset", "cannot self reset", "self reset failed", "unverified account", "not verified", "assets on account", "deposit video", "video call"],
+title: "2FA Reset via Appeal / Manual Process",
+steps: [
+"First attempt: direct user to try the self-service 2FA reset flow (see 2FA Self-Reset SOP) — exhaust all self-service steps first",
+"If self-reset fails or is unavailable after completing all steps: generate a CS summary card",
+"Redirect user to contact CS live chat — CS will guide them through the reset 2FA appeal or manual recovery process",
+"Do NOT provide direct appeal links — always redirect to CS live chat",
+"If user has no assets and account is unverified (no KYC): CS may advise account deletion as an option",
+"If user has assets or completed KYC: CS will guide through manual verification (ID video + verbal statement)",
+"If CS requests a deposit record video: guide user through the Deposit Video SOP"
+],
+warning: "Never skip self-service steps. Only redirect to CS after all self-service options are fully exhausted.",
+errorCodes: []
+},
+{
+id: "2FA_VIDEO_VERIFICATION",
+keywords: ["video", "record video", "video call", "video verification", "video for reset", "selfie video", "id video", "statement video"],
+title: "Video Verification for CS Requests",
+steps: [
+"Priority: CS will initiate a VIDEO CALL directly within the Binance live chat — this is the preferred method.",
+"Only if user has a camera or device technical issue: a self-recorded video is acceptable as a fallback. Do NOT mention this option unless the user specifically raises a tech issue.",
+"For the video call or self-recorded video: sit facing the camera, show face clearly, hold the ID document (KYC document used to verify the account) clearly visible.",
+"Read the following statement clearly:",
+"'Today is DD/MM/YYYY. I confirm this is my activity. I am applying [request] for my Binance account [email or phone linked to the account].'",
+"Request wording: 'to change email from X to Y' / 'to reset Google Authenticator' / 'to reset SMS' / 'to change SMS from X to Y' / 'to unlock my account' / 'to reset my passkey' / 'to verify my account' / 'to resume withdraw and trade feature' / 'to resume withdraw feature'",
+"If user cannot speak English: write the statement on paper with correct date and account details, hold it with the ID in front of the camera, and explain in local language.",
+"Do NOT add watermarks or edit the video. Raw video only.",
+"A deposit video may also be required — CS will advise. See Deposit Video SOP if needed."
+],
+warning: "Video call via Binance CS chat is always the priority. Self-recorded video is only a fallback for technical issues. Never suggest self-recorded video proactively.",
+errorCodes: []
+},
+{
+id: "PASSKEY_TROUBLESHOOT",
+keywords: ["passkey", "passkey not working", "passkey error", "passkey issue", "biometric", "face id", "touch id", "passkey login", "passkey failed", "can't use passkey"],
+title: "Passkey Troubleshooting",
+steps: [
+"Confirm user is using the SAME device the passkey was originally bound to",
+"Confirm user has a good internet connection — switching between WiFi/mobile data/other networks can help",
+"Ask user to clean app cache: Profile > Settings > Clean Cache, then retry",
+"Try logging in from another device — access the Security page to bind a new passkey or remove the old one. App: Profile > Verification bar > Security. PC browser: https://www.binance.com/en/my/security",
+"For desktop users: if passkey was set up on mobile, a QR code will appear — open Binance app on the original device and scan it",
+"If user sends a screenshot with an unknown error code not found in Binance FAQs, redirect to CS chat: https://www.binance.com/en/support/chat-invitation"
+],
+warning: "Passkey is device-bound unless synced via iCloud Keychain or Google Password Manager. Always confirm which device the passkey was created on.",
+errorCodes: []
+},
+{
+id: "PASSKEY_SETUP",
+keywords: ["add passkey", "create passkey", "setup passkey", "how to add passkey", "bind passkey", "new passkey", "passkey setup"],
+title: "How to Add / Set Up a Passkey",
+steps: [
+"App: Log in → Account Center → Profile → Security → [Passkeys (Biometrics)] → [Add Passkey]",
+"Web: Log in → Profile icon → Account → Security → [Manage] next to Passkeys → [Add Passkey]",
+"Choose verification method: iCloud Keychain (iOS), Google Password Manager (Android/Web), USB/NFC security key, or another device via QR code",
+"iCloud Keychain: passkey syncs across all Apple devices with same Apple ID",
+"Google Password Manager: recommended — syncs with Google account automatically",
+"Chrome profile: passkey saved only on that specific device",
+"Requires Binance app 2.60+ with iOS 16+ or Android OS 9+"
+],
+warning: null,
+errorCodes: []
+},
+{
+id: "EMAIL_CODE_ERROR",
+keywords: ["email code", "email verification code", "not receiving email", "email code not working", "email code invalid", "binance email not arriving", "no email from binance", "email 2fa not working", "email otp"],
+title: "Email Verification Code Troubleshooting",
+steps: [
+"TS Step 1 — Check spam/junk folder for emails from noreply@binance.com or support@binance.com",
+"TS Step 2 — Check the email address is the one registered on Binance (ask user to confirm, remind them not to share the full address if sensitive)",
+"TS Step 3 — Wait 2–3 minutes and request a new code — codes expire quickly",
+"TS Step 4 — Check inbox isn't full and email provider isn't blocking Binance",
+"TS Step 5 — If TS does not resolve: ask user to whitelist Binance emails (add noreply@binance.com and support@binance.com to contacts / safe senders list) then try requesting the code again",
+"After whitelist attempt — ask: 'Do you want to try logging in with another method, or would you like to check if the emails are arriving properly?'",
+"PATH A — User wants to login with another method: guide to [Security verification unavailable?] on the login screen, select email as unavailable, follow system options",
+"PATH B — User wants to check if emails are arriving: redirect to live chat support with a summary card — CS can check email delivery on the backend"
+],
+warning: "Exhaust all TS steps including whitelist before offering paths. Never jump to escalation without completing TS.",
+errorCodes: []
+},
+{
+id: "SMS_CODE_ERROR",
+keywords: ["sms code", "sms not received", "sms code not working", "text message code", "not receiving sms", "phone verification code", "sms 2fa not working", "no sms from binance", "sms otp", "phone code"],
+title: "SMS Verification Code Troubleshooting",
+steps: [
+"TS Step 1 — Check signal — low signal or no service will block SMS delivery",
+"TS Step 2 — Check the phone number is the one registered on Binance",
+"TS Step 3 — Wait 2–3 minutes and request a new code — avoid requesting multiple codes quickly",
+"TS Step 4 — Check if SMS is being blocked by carrier or a spam filter app on the device",
+"TS Step 5 — Try toggling airplane mode on/off to refresh network, then request again",
+"TS Step 6 — Try requesting the code while connected to WiFi vs mobile data",
+"After TS — ask: 'Do you want to try logging in with another method, or would you like to check if the SMS messages are arriving from our side?'",
+"PATH A — User wants to login with another method: guide to [Security verification unavailable?] on the login screen, select phone/SMS as unavailable, follow system options",
+"PATH B — User wants to check SMS delivery: redirect to live chat support with a summary card — CS can investigate delivery on the backend"
+],
+warning: "Exhaust all TS steps before offering paths. Do not escalate before completing full troubleshooting.",
+errorCodes: []
+},
+{
+id: "2FA_CODE_ERROR",
+keywords: ["authenticator code wrong", "google authenticator not working", "totp code invalid", "authenticator app code", "2fa code wrong", "invalid code", "code not working", "wrong verification code", "code expired", "6 digit code"],
+title: "Authenticator App Code Error Troubleshooting",
+steps: [
+"TS Step 1 — Check that device time is synced — wrong time causes code mismatches",
+"TS Step 2 — On Android: Settings > General Management > Date and Time > enable Automatic Date and Time",
+"TS Step 3 — On iOS: Settings > General > Date & Time > enable Set Automatically",
+"TS Step 4 — In Google Authenticator: tap menu > Time correction for codes > Sync now",
+"TS Step 5 — Make sure the code belongs to the correct Binance account (right email/label in the app)",
+"If TS does not work: guide to [Security verification unavailable?] → select authenticator as unavailable → follow system options"
+],
+warning: "Time sync is the most common cause. Always try this first before anything else.",
+errorCodes: []
+},
+{
+id: "2FA_STRATEGY",
+keywords: ["2fa strategy", "2fa verification strategy", "customize 2fa", "which 2fa", "2fa for login", "2fa for withdrawal", "change 2fa method"],
+title: "2FA Verification Strategy Setup",
+steps: [
+"Requirements: user must have completed KYC AND have more than 100 USDT in account",
+"App: Account > Security > scroll to Account Activities > [2FA Verification Strategy]",
+"Web: Account > Security > Advanced Security > [Manage] beside 2FA Verification Strategy",
+"Choose 2FA methods: Passkeys, Email, Authenticator App, or Phone Number",
+"Apply to scenarios: Login, Assets, Account Settings, Security Management",
+"Read and confirm disclaimers, then tap/click [Confirm] or [Continue]"
+],
+warning: "Additional 2FA beyond what is selected may still be required in some cases.",
+errorCodes: []
+},
+{
+id: "DEPOSIT_VIDEO",
+keywords: ["deposit video", "related deposit", "deposit record", "deposit proof", "show deposit", "deposit history video"],
+title: "How to Record a 'Related Deposit Record' Video",
+steps: [
+"A deposit video may be required as proof of fund ownership — CS will confirm if needed based on risk assessment.",
+"Reference guide: https://www.binance.com/en/support/faq/detail/6f55ebfd552b43c28ff42f839d034d73",
+"WHAT YOU NEED: remember where the funds currently on your Binance account were originally transferred from (e.g. MetaMask, another exchange, bank account).",
+"WHAT TO RECORD: a video showing you logging into the sender platform, then locating the highest transaction sent to Binance made before the date provided by CS.",
+"CRYPTO EXAMPLE (e.g. MetaMask → Binance): log in to MetaMask on camera, locate the transaction sent to Binance, click on it and show it on the blockchain explorer so the full transaction details and txID are visible.",
+"BANK EXAMPLE (e.g. bank → Binance): log in to your bank app on camera, locate the highest deposit sent to Binance.",
+"ACCEPTED LOGIN METHODS on camera: password, code, fingerprint, or Face ID. You may hide sensitive information during login — but the video MUST start from the sender platform login page.",
+"IMPORTANT — NO SCREEN RECORDING: this video cannot be a screen recording. You must use a second device to record. Examples: record your PC screen with your phone, or use two phones.",
+"If you do NOT have a second device: you can share your screen during the CS video call — CS will record the session. In some cases the deposit video via video call is mandatory regardless.",
+"THIRD-PARTY FUNDS: if the funds were transferred by someone else, that person must record the deposit video on your behalf — showing their login on the sender platform and the relevant transaction. Each user is responsible for the funds on their account regardless of who sent them.",
+"Submit the completed video as an attachment directly in the CS chat."
+],
+warning: "Screen recordings are NOT accepted. A physical second device is required unless sharing screen during the CS video call. CS will confirm whether deposit video is required — do not tell users it is definitely needed unless CS has confirmed it.",
+errorCodes: []
+},
+{
+id: "LIVE_CHAT_VIDEO_CALL",
+keywords: ["video call", "live chat video", "statement video call", "cs video call", "video call with support", "live video", "call with agent"],
+title: "How to Complete a Statement Video Call via CS Live Chat",
+steps: [
+"Open a chat with a CS agent via the Binance support chat (accessible from the Binance app or website — no external link needed)",
+"The CS agent will initiate the video call REQUEST directly within the Binance chat window — no external app, no third-party link, no download required",
+"Accept the video call when prompted inside the chat — ensure your camera and microphone are working before starting",
+"Have your KYC document (ID/passport) ready and clearly visible",
+"Read the statement when prompted: 'Today is DD/MM/YYYY. I confirm this is my activity. I am applying [request] for my Binance account [email or phone].'",
+"Follow all instructions from the CS agent during the call",
+"After the call, CS will confirm next steps — processing may take up to 48 hours",
+"If camera or device is not working: inform the CS agent — a self-recorded video may be accepted as a fallback"
+],
+warning: "The video call happens INSIDE the Binance CS chat. No link, no third-party app, no download. Binance will NEVER ask you to join a call on Telegram, WhatsApp, Zoom or any external platform. If someone sends you a link for a video call claiming to be Binance, it is a scam.",
+errorCodes: []
+},
+{
+id: "UNLOCK_ACCOUNT",
+keywords: ["unlock account", "account disabled", "disabled account", "account locked", "self disabled", "reactivate account", "unlock my account", "account suspended", "binance disabled my account"],
+title: "Unlock a Disabled Binance Account",
+steps: [
+"First clarify: was the account disabled by the USER or by BINANCE?",
+"DISABLED BY USER: CS will require a video call via Binance live chat. Statement format: 'Today is DD/MM/YYYY. I confirm this is my activity. I am applying to unlock my account for my Binance account [email or phone].'",
+"DISABLED BY BINANCE (compliance/audit): same video verification process applies. User must be ready to provide a video call with ID + statement. A deposit video may also be required depending on the audit assessment — CS will advise.",
+"For both cases: have KYC document (ID card, passport, or driver's license) ready and clearly visible on camera.",
+"If user cannot speak English: write the statement on paper with correct date and account email, hold it with the ID in front of the camera.",
+"Video call is conducted within the Binance CS chat — no third-party links or apps.",
+"Do NOT add watermarks or edit any video submitted. Raw video only.",
+"Redirect to CS live chat — do not provide unlock guidance for compliance-related suspensions beyond what is listed here."
+],
+warning: "For compliance-related account disabling, redirect to live chat only. Do not speculate on reasons or timelines.",
+errorCodes: []
+},
+{
+id: "RESET_PASSWORD",
+keywords: ["forgot password", "reset password", "lost password", "change password", "can't remember password", "password reset", "lost access password"],
+title: "Reset Binance Account Password",
+steps: [
+"FIRST — ask the user: do they still remember their password? (yes/no). Remind them NOT to share their password or any codes in this chat — that is a security breach.",
+"Go to Binance.com and click [Log In]",
+"Enter email or phone number, click [Next]",
+"If passkeys are enabled: click [Cancel] on the passkey popup, then [My Passkeys Are Not Available]",
+"Click [Forgot password?] below the password field",
+"Verify identity using available 2FA (email code, SMS, or authenticator)",
+"SCENARIO A — Email only, password forgotten: redirect to [live chat support](https://www.binance.com/en/support/chat-invitation) — agent cannot help reset without 2FA access",
+"SCENARIO B — Has both email AND SMS, lost access to one: user can reset password using the 2FA method they still have access to — proceed with the standard flow",
+"Set a new strong password and confirm",
+"Note: withdrawals, P2P selling, and payments are disabled for 24 hours after a password reset"
+],
+warning: "SECURITY RULES: User must NEVER share their password or 2FA codes in this chat. They may share their full email address or full phone number for identification only. If a password or code is accidentally shared, immediately confirm with the user, erase it from the conversation display, and remind them to change it immediately.",
+errorCodes: []
+},
+{
+id: "LOGIN_FAIL",
+keywords: ["cannot login", "can't log in", "login failed", "locked out", "access denied", "sign in error", "login problem", "can't access", "lost access", "security verification", "verification unavailable", "security method unavailable", "can't receive sms", "no access to email", "lost phone"],
+title: "Login / 2FA Access Troubleshooting",
+steps: [
+"Basic checks first: clear cache, try incognito or a different browser/device",
+"Log in with email/phone + password. If passkey appears: click [Cancel] → [My Passkeys Are Not Available]",
+"On the Security Verification screen, try any 2FA method still available",
+"If a 2FA method is unavailable: click [Security verification unavailable?], select the 2FA you lost access to, and click [Continue] — the system will determine next steps automatically",
+"If you lost access to more than one 2FA: you can repeat this — on the next screen click [Security verification unavailable?] again and select the next unavailable method. Repeat for each one lost",
+"Follow whatever the system offers after each selection — just follow the on-screen instructions",
+"If the system cannot offer a self-service path after all options are exhausted: move to the 2FA Reset Appeal flow"
+],
+warning: "Do not tell the user whether the system will offer alternative login or self-reset — just guide them to click Security verification unavailable, select what they lost, and follow what the system shows. Only escalate after all options are exhausted.",
+errorCodes: ["10006", "10007", "40003"]
+}
+];
+// ─── FEEDBACK TRACKING ───────────────────────────────────────────────────────
+let feedbackLog = []; // [{msgIndex, rating, text, stepContext}]
+let pendingFeedbackMsg = null; // track which message is awaiting follow-up
+function submitFeedback(msgIndex, rating, btnUp, btnDown, label, messageText) {
+const existing = feedbackLog.find(f => f.msgIndex === msgIndex);
+// Toggle off
+if (existing && existing.rating === rating) {
+feedbackLog = feedbackLog.filter(f => f.msgIndex !== msgIndex);
+btnUp.classList.remove('active-up');
+btnDown.classList.remove('active-down');
+label.textContent = '';
+label.classList.remove('noted');
+pendingFeedbackMsg = null;
+return;
+}
+if (existing) {
+existing.rating = rating;
+} else {
+feedbackLog.push({ msgIndex, rating, text: messageText, stepContext: null });
+}
+if (rating === 'up') {
+btnUp.classList.add('active-up');
+btnDown.classList.remove('active-down');
+label.textContent = 'helpful ✓';
+label.classList.add('noted');
+pendingFeedbackMsg = null;
+} else {
+btnDown.classList.add('active-down');
+btnUp.classList.remove('active-up');
+label.textContent = "let me help further →";
+label.classList.add('noted');
+// Trigger empathetic follow-up from the bot
+pendingFeedbackMsg = { msgIndex, text: messageText };
+triggerFeedbackFollowUp(messageText);
+}
+}
+function triggerFeedbackFollowUp(originalResponse) {
+conversationHistory.push({
+role: 'user',
+content: `[INTERNAL: user thumbs-downed your last reply. Be empathetic, ask what specific step failed or what happened, invite a screenshot. One question only. Don't repeat the full flow.]`
+});
+triggerAgentReply();
+}
+async function triggerAgentReply() {
+document.getElementById('sendBtn').disabled = true;
+const typingId = showTyping();
+try {
+const sopContext = '';
+const feedbackContext = getFeedbackContext();
+const response = await fetch('https://api.anthropic.com/v1/messages', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+model: 'claude-sonnet-4-20250514',
+max_tokens: 400,
+system: buildSystemPrompt('', feedbackContext),
+messages: conversationHistory.slice(-10)
+})
+});
+const data = await response.json();
+removeTyping(typingId);
+if (!data.error) {
+const reply = data.content.map(b => b.text || '').join('');
+const displayReply = reply.replace(/\[CLOSE_CHAT\]/g, '').trim();
+conversationHistory.push({ role: 'assistant', content: reply });
+addMessage('agent', displayReply, null, null);
+checkForConversationEnd(reply);
+}
+} catch (err) {
+removeTyping(typingId);
+}
+document.getElementById('sendBtn').disabled = false;
+}
+function getFeedbackContext() {
+const n = feedbackLog.filter(f => f.rating === 'down').length;
+if (!n) return '';
+return `\n\n[${n} previous response(s) marked unhelpful — dig deeper, ask more targeted questions, don't repeat what didn't work]`;
+}
+function buildSystemPrompt(sopContext, feedbackContext) {
+return `You are Bini, Binance's virtual 2FA assistant. You're friendly, casual and helpful — like a knowledgeable colleague. Your expertise covers: 2FA resets, passkeys, password recovery, login issues, and unlocking disabled accounts.
+When starting a new conversation, introduce yourself briefly: "Hey! I'm Bini, your Binance 2FA assistant 👋 What's going on with your account?"
+## HOW TO RESPOND
+- Ask ONE question at a time. Wait for the answer before moving on.
+- Never dump all steps at once. Give the next step only after confirming where the user is.
+- Identify the problem first, then guide step by step.
+- If something fails, ask what happened before moving to the next step.
+- Short sentences. Plain language. Max 3-4 lines unless giving a specific instruction.
+- ALWAYS exhaust every self-service step before redirecting to CS. Never skip steps.
+- If the topic goes outside your SOPs, still gather all relevant info to help CS resolve faster.
+## SUMMARY CARD RULES — CRITICAL
+- If the issue is RESOLVED by the bot (user confirmed it's solved): NO summary card needed. Just close the chat warmly with [CLOSE_CHAT].
+- If CS escalation is required for ANY reason: a summary card is MANDATORY before redirecting.
+- Do NOT send the card mid-conversation or proactively. Only send when (A) escalation to CS is needed, or (B) conversation ends and escalation occurred.
+- Before any CS redirect, stress every self-service option first. Ask: "Is there anything else I can help you clarify before I put you through to CS?"
+- If the topic goes outside your SOPs, still gather all relevant info and include it in the card to help CS work faster.
+## KEY RULES
+**Check account access on another device — always ask this first:**
+- Before any reset or TS flow, ask: "Do you have access to your Binance account on any other device or browser?"
+- If YES and they want to change/remove/reset a 2FA method:
+- App: Profile > Verification bar > Security
+- PC browser: https://www.binance.com/en/my/security
+- They can update or remove 2FA methods from there without any reset flow.
+- Only proceed with reset/appeal flows if they cannot access the account on any device.
+**Lost access to email or SMS 2FA:**
+- First confirm: do they have any other 2FA set up (passkey, authenticator)?
+- If YES → they can use the other method to log in or self-reset.
+- Ask if they remember their registered email OR phone number — just ONE is enough (CS can find the account with either).
+- REMEMBERS at least one → ask if they remember their password:
+- YES password → login page, enter credentials, click [Security verification unavailable?], select lost method, follow on-screen steps.
+- NO password → cannot self-reset. Generate summary card, redirect to CS live chat.
+- DOES NOT REMEMBER either email or phone → only then mention the Forgot Account appeal via CS live chat.
+- NEVER mention Forgot Account appeal unless user explicitly says they don't remember their registered email or phone.
+**What can be changed vs reset:**
+- Email: can only be CHANGED to a new one — cannot be reset.
+- SMS: can be CHANGED (new number) OR RESET (remove and re-add).
+- Passkey: can only be RESET.
+- Google Authenticator: can only be RESET.
+**2FA code issues — always TS first, never skip:**
+- Email code not arriving: check spam/junk → verify correct email → wait 2-3 min and retry → check inbox full/provider blocking → whitelist noreply@binance.com and support@binance.com → retry. Only after ALL steps fail: ask (A) try another login method → Security verification unavailable, or (B) check delivery → CS live chat + summary card.
+- SMS code not arriving: check signal → verify correct number → wait 2-3 min and retry → check carrier/spam block → toggle airplane mode → try WiFi vs mobile data → retry. Only after ALL steps fail: ask (A) try another login method → Security verification unavailable, or (B) check delivery → CS live chat + summary card.
+- Authenticator code wrong: sync device time → Android: Settings > General Management > Date and Time > Automatic. iOS: Settings > General > Date & Time > Set Automatically. Google Auth: menu > Time correction > Sync now. Confirm correct account label. Only after ALL steps fail → Security verification unavailable flow.
+**Login / Security verification unavailable:**
+- Guide to click [Security verification unavailable?] on the login screen.
+- Select the lost 2FA method, click Continue, follow on-screen instructions exactly.
+- If multiple methods lost: repeat for each one on the next screen.
+- Never tell the user what the system will offer — just say "follow what the screen shows."
+- Only escalate to CS after ALL self-service options are exhausted.
+**2FA self-reset failed — escalation to CS:**
+- After all self-service steps exhausted: generate CS summary card and redirect to CS live chat.
+- Tell the user: CS will require a VIDEO CALL via Binance chat (not Telegram, not WhatsApp — Binance CS chat only). Video call is priority.
+- If user raises a camera or device technical issue: self-recorded video is acceptable as fallback — only mention this if user specifically brings up a tech issue.
+- After video call, a deposit video may also be required — CS will advise based on risk assessment.
+- Do NOT provide direct appeal links. Redirect to CS live chat only.
+**Video call statement — always use this exact format:**
+"Today is DD/MM/YYYY. I confirm this is my activity. I am applying [request] for my Binance account [email or phone linked to the account]."
+Request wording examples:
+- to change email from [old] to [new]
+- to reset Google Authenticator
+- to reset SMS / to change SMS from [old] to [new]
+- to unlock my account
+- to reset my passkey
+- to verify my account
+- to resume withdraw and trade feature / to resume withdraw feature
+**What CS may require — if user asks:**
+- Proof of identity: video call showing ID card and reading the statement.
+- Proof of funds (if applicable): deposit video showing login on the sender platform and the highest transaction sent to Binance before the date CS provides. CANNOT be a screen recording — must use a second physical device to record, OR share screen during the CS video call (mandatory in some cases). Reference: https://www.binance.com/en/support/faq/detail/6f55ebfd552b43c28ff42f839d034d73
+- Additional information may be requested to prove identity or fund ownership depending on the case.
+**Account disabled by Binance (not by user):**
+- Same video verification process — user must be ready to provide video call with ID + statement.
+- Deposit video may be required depending on Binance audit assessment.
+- Redirect to CS live chat. Do not provide unlock guidance for compliance-related suspensions.
+**Account unlock (disabled by user themselves):**
+- Requires video call via CS with ID + statement.
+- Statement: "Today is DD/MM/YYYY. I confirm this is my activity. I am applying to unlock my account for my Binance account [email]."
+**Password reset:**
+- Ask if they remember the password (never share it here).
+- If they remember: guide to log in normally.
+- Email only + forgot password → redirect to CS live chat.
+- Email + SMS + forgot password → can self-reset using SMS.
+**Security page paths:**
+- App: Profile > Verification bar > Security
+- PC browser: https://www.binance.com/en/my/security
+**Other rules:**
+- Never help with trading, withdrawals, KYC — redirect to CS live chat.
+- Passwords and verification codes must never be shared. Warn immediately, tell them to change it, never repeat it back.
+- Email or phone is OK to share for identification — just ONE is needed, CS can find the account with either.
+- Passkey issues: confirm same device first. Cache clean: Profile > Settings > Clean Cache.
+- Video calls are initiated by the CS agent INSIDE the Binance chat window. No external link, no third-party app, no download is ever needed or provided. Never give a video call link to the user — there is no such link. If asked how to do a video call, tell them the CS agent will start it from within the chat.
+- After 2FA reset: 48h withdrawal/P2P freeze. After password reset: 24h freeze. Always inform before proceeding.
+- When issue is RESOLVED by the bot: ask "Is there anything else I can help you with?" If no → warm goodbye + [CLOSE_CHAT] signal. No card needed.
+- When CS escalation is needed: generate summary card first, then redirect to CS live chat, then [CLOSE_CHAT].
+## FORGOT ACCOUNT APPEAL — FOLLOW-UP
+Only relevant if user confirmed they do NOT remember their registered email or phone.
+If already submitted via CS: they'll receive an email with their registered details. Once they have it, open a new CS chat. Generate a summary card so they're ready.
+## LIVE CHAT REDIRECT — COLLECT ONE IDENTIFIER
+Ask for account email OR phone — just one is enough. Only collect both if user volunteers both.
+**If user doesn't remember either:** advise CS live chat for Forgot Account appeal — appeal reveals registered details.
+**If user remembers at least one:** do NOT ask for the other. Do NOT mention Forgot Account appeal. Generate card and redirect.
+Always end with this card:
+---SUMMARY FOR CS AGENT---
+Issue type: [2FA Reset / Password Reset / Account Unlock / Passkey / Forgot Account / Email Delivery / SMS Delivery / Other]
+Account identifier: [email and/or phone — confirmed / not remembered]
+2FA methods on account: [what user has/had set up]
+Change or reset requested: [e.g. change email / reset SMS / reset Google Auth / reset passkey / unlock account]
+Steps already tried: [everything attempted]
+Stuck at: [specific step or error]
+Video call ready: [yes / no / unsure]
+Deposit video may be required: [yes / no / unsure — CS to confirm]
+Screenshot provided: [yes / no]
+Notes: [all relevant details including off-topic info that may help CS]
+---END OF SUMMARY---
+${sopContext}${feedbackContext}`;
+}
+let apiKey = localStorage.getItem('bnb_support_key') || '';
+function saveKey() {
+const val = document.getElementById('apiKeyInput').value.trim();
+if (!val || val.startsWith('•')) return;
+apiKey = val;
+localStorage.setItem('bnb_support_key', val);
+document.getElementById('apiKeyInput').value = '••••••••••••••••';
+const status = document.getElementById('apiKeyStatus');
+if (status) status.textContent = '✓ Key saved';
+}
+function initApiKeyDisplay() {
+const input = document.getElementById('apiKeyInput');
+const status = document.getElementById('apiKeyStatus');
+if (apiKey && input) input.value = '••••••••••••••••';
+if (apiKey && status) status.textContent = '✓ Key active';
+}
+let conversationHistory = [];
+let pendingImages = []; // [{base64, mediaType, previewUrl}]
+// ─── SOP MATCHING ────────────────────────────────────────────────────────────
+function matchSOP(text) {
+const lower = text.toLowerCase();
+for (const sop of SOPS) {
+if (sop.keywords.some(k => lower.includes(k))) return sop;
+if (sop.errorCodes.some(c => lower.includes(c.toLowerCase()))) return sop;
+}
+return null;
+}
+function sopToText(sop) {
+let out = `[SOP: ${sop.title}]\n${sop.steps.map((s,i) => `${i+1}. ${s}`).join('\n')}`;
+if (sop.warning) out += `\nNote: ${sop.warning}`;
+return out;
+}
+// ─── IMAGE HANDLING ──────────────────────────────────────────────────────────
+function handleImages(e) {
+const files = Array.from(e.target.files);
+files.forEach(file => {
+const reader = new FileReader();
+reader.onload = ev => {
+const base64 = ev.target.result.split(',')[1];
+const mediaType = file.type;
+const previewUrl = ev.target.result;
+pendingImages.push({ base64, mediaType, previewUrl });
+renderImagePreviews();
+};
+reader.readAsDataURL(file);
+});
+e.target.value = '';
+}
+function renderImagePreviews() {
+const strip = document.getElementById('imgPreviewStrip');
+strip.innerHTML = '';
+pendingImages.forEach((img, i) => {
+const thumb = document.createElement('div');
+thumb.className = 'img-preview-thumb';
+thumb.innerHTML = `<img src="${img.previewUrl}"><button class="remove-img" onclick="removeImage(${i})">✕</button>`;
+strip.appendChild(thumb);
+});
+}
+function removeImage(i) {
+pendingImages.splice(i, 1);
+renderImagePreviews();
+}
+// ─── MESSAGING ───────────────────────────────────────────────────────────────
+function quickSend(text) {
+document.getElementById('userInput').value = text;
+sendMessage();
+}
+function handleKey(e) {
+if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+function autoResize(el) {
+el.style.height = 'auto';
+el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+}
+async function sendMessage() {
+const input = document.getElementById('userInput');
+const text = input.value.trim();
+const images = [...pendingImages];
+if (!text && images.length === 0) return;
+if (!apiKey) { addMessage('agent', '⚠️ No API key set. Click the ◈ button to open the dev panel and add your key.'); return; }
+// Show user message
+addMessage('user', text, images);
+input.value = '';
+input.style.height = 'auto';
+pendingImages = [];
+renderImagePreviews();
+document.getElementById('sendBtn').disabled = true;
+// SOP match
+const sop = matchSOP(text);
+// Build message content for API
+const userContent = [];
+images.forEach(img => {
+userContent.push({ type: 'image', source: { type: 'base64', media_type: img.mediaType, data: img.base64 } });
+});
+if (text) userContent.push({ type: 'text', text });
+conversationHistory.push({ role: 'user', content: userContent.length === 1 && !images.length ? text : userContent });
+// Show typing
+const typingId = showTyping();
+try {
+const sopContext = sop ? `\n\nRELEVANT SOP FOUND:\n${sopToText(sop)}` : '';
+const feedbackContext = getFeedbackContext();
+const trimmedHistory = conversationHistory.slice(-10);
+const response = await fetch('https://api.anthropic.com/v1/messages', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+model: 'claude-sonnet-4-20250514',
+max_tokens: 400,
+system: buildSystemPrompt(sopContext, feedbackContext),
+messages: trimmedHistory
+})
+});
+const data = await response.json();
+removeTyping(typingId);
+if (data.error) {
+addMessage('agent', `❌ API Error: ${data.error.message}`);
+} else {
+const reply = data.content.map(b => b.text || '').join('');
+conversationHistory.push({ role: 'assistant', content: reply });
+addMessage('agent', reply, null, sop);
+checkForConversationEnd(reply);
+}
+} catch (err) {
+removeTyping(typingId);
+addMessage('agent', `❌ Connection error: ${err.message}. Check your API key and internet connection.`);
+}
+document.getElementById('sendBtn').disabled = false;
+}
+// ─── RENDER ──────────────────────────────────────────────────────────────────
+function addMessage(role, text, images = null, sop = null) {
+const chat = document.getElementById('chatArea');
+// Remove welcome card on first message
+const welcome = chat.querySelector('.welcome-card');
+if (welcome) welcome.remove();
+const msg = document.createElement('div');
+msg.className = `message ${role}`;
+const avatar = document.createElement('div');
+avatar.className = `avatar ${role === 'agent' ? 'agent-av' : 'user-av'}`;
+if (role === 'agent') {
+avatar.innerHTML = `<svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#000"/><g fill="#F0B90B"><polygon points="50,18 60,28 50,38 40,28"/><polygon points="28,40 38,50 28,60 18,50"/><polygon points="72,40 82,50 72,60 62,50"/><polygon points="50,62 62,50 74,62 62,74"/><polygon points="50,62 38,50 26,62 38,74"/><polygon points="50,38 62,50 50,62 38,50"/></g></svg>`;
+} else {
+avatar.textContent = 'U';
+}
+const bubble = document.createElement('div');
+bubble.className = 'bubble';
+// Images
+if (images && images.length > 0) {
+images.forEach(img => {
+const im = document.createElement('img');
+im.src = img.previewUrl;
+bubble.appendChild(im);
+});
+if (text) bubble.appendChild(document.createElement('br'));
+}
+// Text with markdown (bold, code, links, headings, lists, summary card)
+if (text) {
+const summaryRegex = /---SUMMARY FOR CS AGENT---([\s\S]*?)---END OF SUMMARY---/;
+const summaryMatch = text.match(summaryRegex);
+// Split text into parts: before summary, the summary, after summary
+const parts = text.split(summaryRegex);
+// parts[0] = before, parts[1] = summary content (if matched), parts[2] = after
+const renderMarkdown = (raw) => raw
+.replace(/\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">$1</a>')
+.replace(/#{1,3} (.+)/g, '<strong>$1</strong>')
+.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+.replace(/`([^`]+)`/g, '<code>$1</code>')
+.replace(/^(\d+)\.\s(.+)$/gm, '<li>$2</li>')
+.replace(/(<li>.*<\/li>)/gs, '<ol>$1</ol>')
+.replace(/\n/g, '<br>');
+if (summaryMatch) {
+const summaryContent = summaryMatch[1].trim();
+// Render text before summary
+if (parts[0].trim()) {
+const before = document.createElement('span');
+before.innerHTML = renderMarkdown(parts[0].trim());
+bubble.appendChild(before);
+}
+// Render summary card
+const card = document.createElement('div');
+card.className = 'summary-card';
+const cardHeader = document.createElement('div');
+cardHeader.className = 'summary-card-header';
+const cardTitle = document.createElement('div');
+cardTitle.className = 'summary-card-title';
+cardTitle.textContent = '📋 Summary for CS Agent';
+const copyBtn = document.createElement('button');
+copyBtn.className = 'copy-btn';
+copyBtn.innerHTML = '⎘ Copy';
+copyBtn.addEventListener('click', () => {
+navigator.clipboard.writeText(summaryContent).then(() => {
+copyBtn.textContent = '✓ Copied!';
+copyBtn.classList.add('copied');
+setTimeout(() => {
+copyBtn.innerHTML = '⎘ Copy';
+copyBtn.classList.remove('copied');
+}, 2000);
+});
+});
+cardHeader.appendChild(cardTitle);
+cardHeader.appendChild(copyBtn);
+const cardBody = document.createElement('div');
+cardBody.textContent = summaryContent;
+card.appendChild(cardHeader);
+card.appendChild(cardBody);
+bubble.appendChild(card);
+// Render text after summary
+if (parts[2] && parts[2].trim()) {
+const after = document.createElement('span');
+after.innerHTML = '<br>' + renderMarkdown(parts[2].trim());
+bubble.appendChild(after);
+}
+} else {
+const span = document.createElement('span');
+span.innerHTML = renderMarkdown(text);
+bubble.appendChild(span);
+}
+}
+msg.appendChild(avatar);
+msg.appendChild(bubble);
+// Feedback row — only on agent messages, not typing/error
+if (role === 'agent' && text && !text.startsWith('❌') && !text.startsWith('✅') && !text.startsWith('⚠️')) {
+const msgIndex = feedbackLog.length + Date.now();
+const feedbackRow = document.createElement('div');
+feedbackRow.className = 'feedback-row';
+const btnUp = document.createElement('button');
+btnUp.className = 'fb-btn';
+btnUp.title = 'Correct';
+btnUp.textContent = '👍';
+const btnDown = document.createElement('button');
+btnDown.className = 'fb-btn';
+btnDown.title = 'Incorrect / needs improvement';
+btnDown.textContent = '👎';
+const label = document.createElement('span');
+label.className = 'fb-label';
+btnUp.addEventListener('click', () => submitFeedback(msgIndex, 'up', btnUp, btnDown, label, text));
+btnDown.addEventListener('click', () => submitFeedback(msgIndex, 'down', btnUp, btnDown, label, text));
+feedbackRow.appendChild(btnUp);
+feedbackRow.appendChild(btnDown);
+feedbackRow.appendChild(label);
+bubble.appendChild(feedbackRow);
+}
+chat.appendChild(msg);
+chat.scrollTop = chat.scrollHeight;
+}
+function showTyping() {
+const chat = document.getElementById('chatArea');
+const id = 'typing-' + Date.now();
+const msg = document.createElement('div');
+msg.className = 'message agent typing-indicator';
+msg.id = id;
+msg.innerHTML = `
+<div class="avatar agent-av"><svg viewBox="0 0 100 100" width="26" height="26" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="#000"/><g fill="#F0B90B"><polygon points="50,18 60,28 50,38 40,28"/><polygon points="28,40 38,50 28,60 18,50"/><polygon points="72,40 82,50 72,60 62,50"/><polygon points="50,62 62,50 74,62 62,74"/><polygon points="50,62 38,50 26,62 38,74"/><polygon points="50,38 62,50 50,62 38,50"/></g></svg></div>
+<div class="bubble"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
+chat.appendChild(msg);
+chat.scrollTop = chat.scrollHeight;
+return id;
+}
+function removeTyping(id) {
+document.getElementById(id)?.remove();
+}
+// ─── SESSION LOG (persisted to localStorage) ─────────────────────────────────
+const SESSION_KEY = 'bnb_dev_sessions';
+const SESSION_COUNTER_KEY = 'bnb_session_counter';
+function getNextSessionNumber() {
+const n = parseInt(localStorage.getItem(SESSION_COUNTER_KEY) || '0', 10);
+localStorage.setItem(SESSION_COUNTER_KEY, n + 1);
+return n;
+}
+function saveSession(sessionData) {
+try {
+const existing = JSON.parse(localStorage.getItem(SESSION_KEY) || '[]');
+existing.push(sessionData);
+if (existing.length > 200) existing.splice(0, existing.length - 200);
+localStorage.setItem(SESSION_KEY, JSON.stringify(existing));
+} catch(e) {}
+}
+function getSessions() {
+try { return JSON.parse(localStorage.getItem(SESSION_KEY) || '[]'); } catch(e) { return []; }
+}
+function clearSessions() {
+localStorage.removeItem(SESSION_KEY);
+localStorage.removeItem(SESSION_COUNTER_KEY);
+renderDevPanel();
+}
+function getChatTranscript() {
+const msgs = document.querySelectorAll('#chatArea .message');
+let transcript = [];
+msgs.forEach(msg => {
+const isAgent = msg.classList.contains('agent') && !msg.classList.contains('typing-indicator');
+const isUser = msg.classList.contains('user');
+if (!isAgent && !isUser) return;
+const bubble = msg.querySelector('.bubble');
+if (!bubble) return;
+const text = bubble.innerText || bubble.textContent || '';
+if (text.trim()) transcript.push({ role: isAgent ? 'Bini' : 'User', text: text.trim() });
+});
+return transcript;
+}
+// ─── END CHAT ─────────────────────────────────────────────────────────────────
+let chatEnded = false;
+let endChatSentiment = null;
+let currentSessionNumber = null;
+function triggerCloseChat() {
+if (chatEnded) return;
+showEndChatCard();
+}
+function checkForConversationEnd(replyText) {
+if (replyText.includes('[CLOSE_CHAT]')) {
+setTimeout(() => showEndChatCard(), 1200);
+}
+}
+function showEndChatCard() {
+if (chatEnded || document.getElementById('endChatCard')) return;
+const chat = document.getElementById('chatArea');
+const card = document.createElement('div');
+card.className = 'end-chat-card';
+card.id = 'endChatCard';
+card.innerHTML = `
+<div class="end-title">We hope this chat met your expectations 💛</div>
+<div class="end-sub">Take a moment to review your support experience before closing.</div>
+<div class="emoji-feedback">
+<button class="emoji-btn" id="btnHappy" onclick="selectEmoji('happy')" title="Good experience">😊</button>
+<button class="emoji-btn" id="btnSad" onclick="selectEmoji('sad')" title="Needs improvement">😞</button>
+</div>
+<textarea id="endComment" rows="2" placeholder="Any comments? (optional)"></textarea>
+<button class="btn-end-confirm" onclick="confirmEndChat()">End Chat</button>`;
+chat.appendChild(card);
+chat.scrollTop = chat.scrollHeight;
+}
+function selectEmoji(type) {
+endChatSentiment = type;
+document.getElementById('btnHappy').classList.toggle('selected-happy', type === 'happy');
+document.getElementById('btnHappy').classList.remove('selected-sad');
+document.getElementById('btnSad').classList.toggle('selected-sad', type === 'sad');
+document.getElementById('btnSad').classList.remove('selected-happy');
+}
+// Detect if CS card was shown in this conversation
+function wasEscalated() {
+const chat = document.getElementById('chatArea');
+return !!(chat && chat.querySelector('.summary-card'));
+}
+async function confirmEndChat() {
+if (chatEnded) return;
+chatEnded = true;
+const comment = document.getElementById('endComment')?.value.trim() || '';
+const sentiment = endChatSentiment || 'neutral';
+const escalated = wasEscalated();
+const outcome = escalated ? 'escalated' : 'solved';
+const transcript = getChatTranscript();
+const sessionNumber = currentSessionNumber !== null ? currentSessionNumber : getNextSessionNumber();
+currentSessionNumber = sessionNumber;
+const summaryPrompt = `Summarise this support session in JSON with these exact fields:
+{"topics":[],"resolved":[],"unresolved":[],"feedback_sentiment":"${sentiment}","feedback_summary":"one sentence"}
+Reply with JSON only.`;
+let sessionData = {
+number: sessionNumber,
+date: new Date().toISOString(),
+outcome,
+comment,
+topics: [],
+resolved: [],
+unresolved: [],
+feedback_sentiment: sentiment,
+feedback_summary: comment || 'No comment left',
+transcript
+};
+try {
+const res = await fetch('https://api.anthropic.com/v1/messages', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+model: 'claude-sonnet-4-20250514',
+max_tokens: 250,
+system: 'Summarise support sessions. Reply with valid JSON only, no extra text.',
+messages: [...conversationHistory.slice(-10), { role: 'user', content: summaryPrompt }]
+})
+});
+const data = await res.json();
+const raw = data.content?.map(b => b.text || '').join('').replace(/```json|```/g, '').trim();
+Object.assign(sessionData, JSON.parse(raw), { number: sessionNumber, date: new Date().toISOString(), comment, outcome, transcript });
+} catch(e) {}
+saveSession(sessionData);
+const card = document.getElementById('endChatCard');
+if (card) {
+card.innerHTML = `
+<div class="chat-ended-msg">✓ Chat closed — thanks for using Bini!</div>
+<button class="btn-new-chat" onclick="startNewChat()">+ Start new chat</button>`;
+}
+document.getElementById('userInput').disabled = true;
+document.getElementById('sendBtn').disabled = true;
+}
+function startNewChat() {
+chatEnded = false;
+endChatSentiment = null;
+conversationHistory = [];
+pendingImages = [];
+feedbackLog = [];
+pendingFeedbackMsg = null;
+currentSessionNumber = getNextSessionNumber();
+const sid = document.getElementById('headerSessionId');
+if (sid) sid.textContent = `Session #${currentSessionNumber}`;
+const chat = document.getElementById('chatArea');
+chat.innerHTML = `
+<div class="welcome-card">
+<div class="sop-cards">
+<button class="sop-card" onclick="quickSend('I need to reset my 2FA')">🔐<span>Reset 2FA</span></button>
+<button class="sop-card" onclick="quickSend('My passkey is not working')">🔑<span>Passkey Issue</span></button>
+<button class="sop-card" onclick="quickSend('How do I add a new passkey?')">➕<span>Add Passkey</span></button>
+<button class="sop-card" onclick="quickSend('My email verification code is not arriving')">📧<span>Email Code</span></button>
+<button class="sop-card" onclick="quickSend('My SMS verification code is not arriving')">📱<span>SMS Code</span></button>
+<button class="sop-card" onclick="quickSend('My authenticator app code is not working')">⚠️<span>Auth Code</span></button>
+<button class="sop-card" onclick="quickSend('I forgot my password and need to reset it')">🔒<span>Reset Password</span></button>
+<button class="sop-card" onclick="quickSend('My account was disabled and I need to unlock it')">🔓<span>Unlock Account</span></button>
+<button class="sop-card" onclick="quickSend('I need to record a video for my 2FA reset')">🎥<span>Video Guide</span></button>
+</div>
+<div class="wc-icon">👋</div>
+<h2>Hey, I'm Bini!</h2>
+<p>Your Binance virtual 2FA assistant. I'm here to help you with anything 2FA — resets, passkeys, password recovery, account access. Just tell me what's going on!</p>
+</div>`;
+document.getElementById('userInput').disabled = false;
+document.getElementById('sendBtn').disabled = false;
+document.getElementById('userInput').focus();
+}
+// ─── DEV PANEL ────────────────────────────────────────────────────────────────
+const DEV_PIN = '2025dev';
+let devUnlocked = false;
+let devActiveTab = 'solved';
+let viewingSession = null;
+function promptDevAccess() {
+if (devUnlocked) { openDevPanel(); return; }
+const modal = document.getElementById('devPinModal');
+modal.style.display = 'flex';
+document.getElementById('devPinInput').value = '';
+document.getElementById('devPinError').textContent = '';
+setTimeout(() => document.getElementById('devPinInput').focus(), 50);
+}
+function closePinModal() {
+document.getElementById('devPinModal').style.display = 'none';
+}
+function submitPin() {
+const val = document.getElementById('devPinInput').value;
+if (val === DEV_PIN) {
+devUnlocked = true;
+closePinModal();
+openDevPanel();
+} else {
+document.getElementById('devPinError').textContent = 'Incorrect PIN';
+document.getElementById('devPinInput').value = '';
+document.getElementById('devPinInput').focus();
+}
+}
+function openDevPanel() {
+renderDevPanel();
+initApiKeyDisplay();
+document.getElementById('devPanel').classList.add('open');
+}
+function closeDevPanel() {
+document.getElementById('devPanel').classList.remove('open');
+viewingSession = null;
+}
+function setDevTab(tab) {
+devActiveTab = tab;
+viewingSession = null;
+renderDevPanel();
+}
+function viewSessionChat(sessionNumber) {
+const sessions = getSessions();
+viewingSession = sessions.find(s => s.number === sessionNumber) || null;
+renderDevPanel();
+}
+function backToList() {
+viewingSession = null;
+renderDevPanel();
+}
+function renderDevPanel() {
+const sessions = getSessions();
+const body = document.getElementById('devPanelBody');
+// Session transcript view
+if (viewingSession) {
+const s = viewingSession;
+const outcomeColor = s.outcome === 'escalated' ? 'var(--red)' : '#22c55e';
+const outcomeLabel = s.outcome === 'escalated' ? '↗ Escalated to CS' : '✓ Solved by bot';
+const transcript = s.transcript || [];
+body.innerHTML = `
+<div style="padding:0.75rem 1rem;border-bottom:1px solid var(--border)">
+<button onclick="backToList()" style="background:none;border:none;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:0.72rem;cursor:pointer;padding:0;margin-bottom:0.5rem">← Back</button>
+<div style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:var(--text)">Session #${s.number}</div>
+<div style="font-size:0.68rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:0.2rem">${new Date(s.date).toLocaleString('en-GB')}</div>
+<div style="font-size:0.7rem;color:${outcomeColor};font-family:'IBM Plex Mono',monospace;margin-top:0.3rem;font-weight:600">${outcomeLabel}</div>
+${s.topics?.length ? `<div style="font-size:0.68rem;color:var(--muted);margin-top:0.25rem">Topics: ${s.topics.join(', ')}</div>` : ''}
+${s.comment ? `<div style="font-size:0.68rem;color:var(--muted);font-style:italic;margin-top:0.25rem">"${s.comment}"</div>` : ''}
+</div>
+<div style="padding:0.75rem 1rem;flex:1;overflow-y:auto">
+<div class="dev-section-title">💬 Chat Transcript</div>
+${transcript.length ? transcript.map(m => `
+<div style="margin-bottom:0.6rem">
+<div style="font-size:0.65rem;font-family:'IBM Plex Mono',monospace;color:${m.role==='Bini'?'var(--accent)':'var(--muted)'};margin-bottom:0.15rem;font-weight:600">${m.role}</div>
+<div style="font-size:0.75rem;color:var(--text);line-height:1.5;white-space:pre-wrap">${m.text}</div>
+</div>`).join('<hr style="border:none;border-top:1px solid var(--border);margin:0.5rem 0">') : '<div class="dev-empty">No transcript recorded</div>'}
+</div>`;
+return;
+}
+const solvedSessions = sessions.filter(s => s.outcome === 'solved');
+const escalatedSessions = sessions.filter(s => s.outcome === 'escalated');
+const sentiments = { positive: 0, negative: 0, neutral: 0 };
+sessions.forEach(s => sentiments[s.feedback_sentiment || 'neutral']++);
+// Collect unresolved topics with session IDs
+const unresolvedMap = [];
+sessions.forEach(s => {
+(s.unresolved || []).forEach(u => unresolvedMap.push({ topic: u, number: s.number, date: s.date }));
+});
+const unresolvedCounts = unresolvedMap.reduce((acc, u) => {
+const key = u.topic;
+if (!acc[key]) acc[key] = { count: 0, sessions: [] };
+acc[key].count++;
+acc[key].sessions.push(u.number);
+return acc;
+}, {});
+const topUnresolved = Object.entries(unresolvedCounts).sort((a,b) => b[1].count - a[1].count);
+// Collect close chat comments (end-of-chat feedback)
+const closeChatComments = sessions.filter(s => s.comment && s.comment.trim());
+// Collect bot reply feedback comments from transcript feedback
+const botFeedbackComments = sessions.filter(s => s.feedback_summary && s.feedback_summary !== 'No comment left' && s.feedback_summary !== s.comment);
+// Tab content
+const tabs = [
+{ id: 'solved',     label: `✓ Solved`,     count: solvedSessions.length,    color: devActiveTab==='solved'?'#22c55e':'transparent',     textColor: devActiveTab==='solved'?'#22c55e':'var(--muted)' },
+{ id: 'escalated',  label: `↗ CS`,          count: escalatedSessions.length, color: devActiveTab==='escalated'?'var(--red)':'transparent',  textColor: devActiveTab==='escalated'?'var(--red)':'var(--muted)' },
+{ id: 'unresolved', label: `⚠️ Gaps`,        count: topUnresolved.length,     color: devActiveTab==='unresolved'?'#f59e0b':'transparent',    textColor: devActiveTab==='unresolved'?'#f59e0b':'var(--muted)' },
+{ id: 'comments',   label: `💬 Comments`,   count: closeChatComments.length + botFeedbackComments.length, color: devActiveTab==='comments'?'var(--accent)':'transparent', textColor: devActiveTab==='comments'?'var(--accent)':'var(--muted)' },
+];
+let tabContent = '';
+if (devActiveTab === 'solved' || devActiveTab === 'escalated') {
+const activeSessions = devActiveTab === 'solved' ? solvedSessions : escalatedSessions;
+tabContent = activeSessions.length ? activeSessions.slice().reverse().map(s => `
+<div class="dev-entry" onclick="viewSessionChat(${s.number})" style="cursor:pointer;transition:background 0.15s" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background=''">
+<div style="display:flex;justify-content:space-between;align-items:center">
+<span style="font-family:'Syne',sans-serif;font-weight:700;font-size:0.8rem;color:var(--text)">Session #${s.number}</span>
+<span style="font-size:0.62rem;font-family:'IBM Plex Mono',monospace;color:var(--muted)">${new Date(s.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}</span>
+</div>
+<div style="font-size:0.7rem;color:var(--muted);margin-top:0.2rem">${(s.topics||[]).join(', ') || '—'}</div>
+${s.unresolved?.length ? `<div style="font-size:0.68rem;color:var(--red);margin-top:0.15rem">Unresolved: ${s.unresolved.join(', ')}</div>` : ''}
+${s.comment ? `<div style="font-size:0.68rem;color:var(--muted);font-style:italic;margin-top:0.15rem">"${s.comment}"</div>` : ''}
+<div style="font-size:0.62rem;color:var(--muted);margin-top:0.25rem;font-family:'IBM Plex Mono',monospace">Click to view transcript →</div>
+</div>`).join('') : `<div class="dev-empty">No ${devActiveTab} sessions yet.</div>`;
+}
+if (devActiveTab === 'unresolved') {
+tabContent = topUnresolved.length ? topUnresolved.map(([topic, data]) => `
+<div class="dev-entry">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:0.5rem">
+<div style="font-size:0.78rem;color:var(--text);flex:1">${topic}</div>
+<span style="font-size:0.65rem;font-family:'IBM Plex Mono',monospace;color:#f59e0b;white-space:nowrap;font-weight:700">${data.count}x</span>
+</div>
+<div style="font-size:0.62rem;font-family:'IBM Plex Mono',monospace;color:var(--muted);margin-top:0.25rem">
+Sessions: ${data.sessions.map(n => `<span onclick="viewSessionChat(${n})" style="color:var(--accent);cursor:pointer;text-decoration:underline">#${n}</span>`).join(', ')}
+</div>
+</div>`).join('') : '<div class="dev-empty">No unresolved topics recorded.</div>';
+}
+if (devActiveTab === 'comments') {
+const closeSection = closeChatComments.length ? closeChatComments.slice().reverse().map(s => `
+<div class="dev-entry">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem">
+<span style="font-size:0.65rem;font-family:'IBM Plex Mono',monospace;color:var(--accent);font-weight:600">Session #${s.number}</span>
+<span style="font-size:0.6rem;font-family:'IBM Plex Mono',monospace;color:var(--muted)">${new Date(s.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short'})}</span>
+</div>
+<div style="font-size:0.75rem;color:var(--text);font-style:italic">"${s.comment}"</div>
+<div style="font-size:0.62rem;color:var(--muted);margin-top:0.2rem">${s.feedback_sentiment==='positive'?'👍':s.feedback_sentiment==='negative'?'👎':'😐'} ${s.feedback_sentiment||'neutral'}</div>
+</div>`).join('') : '<div class="dev-empty">No close chat comments yet.</div>';
+const botSection = botFeedbackComments.length ? botFeedbackComments.slice().reverse().map(s => `
+<div class="dev-entry">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem">
+<span style="font-size:0.65rem;font-family:'IBM Plex Mono',monospace;color:var(--accent);font-weight:600">Session #${s.number}</span>
+<span style="font-size:0.6rem;font-family:'IBM Plex Mono',monospace;color:var(--muted)">${new Date(s.date).toLocaleDateString('en-GB',{day:'2-digit',month:'short'})}</span>
+</div>
+<div style="font-size:0.75rem;color:var(--text)">${s.feedback_summary}</div>
+</div>`).join('') : '<div class="dev-empty">No bot reply feedback yet.</div>';
+tabContent = `
+<div class="dev-section-title" style="padding:0.5rem 1rem 0.25rem">🔚 Close Chat Comments (${closeChatComments.length})</div>
+${closeSection}
+<div class="dev-section-title" style="padding:0.75rem 1rem 0.25rem;border-top:1px solid var(--border);margin-top:0.5rem">🤖 Bot Reply Feedback (${botFeedbackComments.length})</div>
+${botSection}`;
+}
+body.innerHTML = `
+<div style="padding:0.6rem 1rem;border-bottom:1px solid var(--border);flex-shrink:0">
+<div class="dev-section-title" style="margin-bottom:0.4rem">📊 Overview (${sessions.length} total)</div>
+<div style="font-size:0.72rem;font-family:'IBM Plex Mono',monospace;color:var(--muted)">
+✓ Solved: <strong style="color:#22c55e">${solvedSessions.length}</strong> &nbsp;
+↗ Escalated: <strong style="color:var(--red)">${escalatedSessions.length}</strong> &nbsp;
+👍 <strong>${sentiments.positive}</strong> 😐 <strong>${sentiments.neutral}</strong> 👎 <strong>${sentiments.negative}</strong>
+</div>
+</div>
+<div style="display:flex;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto">
+${tabs.map(t => `
+<button onclick="setDevTab('${t.id}')" style="flex:1;padding:0.45rem 0.25rem;min-width:60px;background:${devActiveTab===t.id?'var(--surface2)':'none'};border:none;border-bottom:2px solid ${t.color};color:${t.textColor};font-family:'IBM Plex Mono',monospace;font-size:0.62rem;cursor:pointer;transition:all 0.15s;white-space:nowrap">
+${t.label} (${t.count})
+</button>`).join('')}
+</div>
+<div style="flex:1;overflow-y:auto;padding:0.5rem 0">
+${tabContent}
+<button class="dev-clear-btn" onclick="if(confirm('Clear all session data?')) clearSessions()">Clear all data</button>
+</div>`;
+}
+// ─── ATTACH EVENTS AFTER DOM READY ───────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+currentSessionNumber = getNextSessionNumber();
+const sid = document.getElementById('headerSessionId');
+if (sid) sid.textContent = `Session #${currentSessionNumber}`;
+initApiKeyDisplay();
+const input = document.getElementById('userInput');
+if (input) {
+input.addEventListener('keydown', handleKey);
+input.addEventListener('input', () => autoResize(input));
+}
+const fileInput = document.getElementById('fileInput');
+if (fileInput) fileInput.addEventListener('change', handleImages);
+const pinInput = document.getElementById('devPinInput');
+if (pinInput) pinInput.addEventListener('keydown', e => { if (e.key === 'Enter') submitPin(); });
+});</script>
+</body>
+</html>
